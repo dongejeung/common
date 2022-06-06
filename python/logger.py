@@ -8,12 +8,17 @@ import os
 
 # 가장 기본적인 형태의 로거 샘플!
 class RootLogger():
-    def __init__(self, logger_name):
-        self.logger_name = logger_name
+    # init method
+    def __init__(self, log_name, log_path, log_level):
+        self.log_name = log_name
+        self.log_path = log_path
+        self.log_level = log_level
 
+    # get log method
     def get_log(self):
-        logger = log.getLogger(self.logger_name)
-        logger.setLevel(log.INFO)
+        logger = log.getLogger(self.log_name)
+        #logger.setLevel(log.INFO)
+        logger.setLevel(self.log_level)
 
         # when logger already exists
         if len(logger.handlers) > 0:
@@ -22,8 +27,8 @@ class RootLogger():
         now = pdl.now(tz='Asia/Seoul')
         now_str = now.strftime('%Y%m%d%H')
 
-        log_path = f''
-        log_file_name = f''
+        log_path = self.log_path
+        log_file_name = self.log_name
 
         os.makedirs(log_path, exist_ok=True)
 
