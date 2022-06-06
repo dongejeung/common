@@ -1,11 +1,11 @@
 import sys, os
+import pandas as pd
 
-
-class DefaultClass(self):
+class DefaultDataframe(self):
 
     # Init Method
-    def __init__(self):
-        pass
+    def __init__(self, df):
+        self.df = df
 
 
     # Main Method
